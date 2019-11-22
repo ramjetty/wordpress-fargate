@@ -3,12 +3,12 @@ environments:
   - name: acceptance
     provider: ecs-fargate
     loadbalancer:
-      hostedzone: shhorsfi.myinstance.com
+      hostedzone: dev.awsedtech.com
       name: wordpress-stg
   - name: production
     provider: ecs-fargate
     loadbalancer:
-      hostedzone: shhorsfi.myinstance.com
+      hostedzone: wordpress.awsedtech.com
       name: wordpress-prd
 
 # CloudFormation Template Overrides
@@ -143,7 +143,7 @@ service:
     WORDPRESS_DB_PASSWORD: ${DatabaseMasterPassword}
     WORDPRESS_DB_NAME: ${DatabaseName}
     USER_UPLOAD_BUCKET: ${UserUploadBucket}
-    USER_UPLOAD_REGION: us-west-2
+    USER_UPLOAD_REGION: us-east-1
     SSM_USER_UPLOAD_KEY_PARAM: wordpress-accesskey       # Replace with name of paramter containing secret
     SSM_USER_UPLOAD_SAK_PARAM: wordpress-secretaccesskey # Replace with name of paramter containing secret
   pipeline:
@@ -157,7 +157,7 @@ service:
       disabled: true
       environment: production
     notify:
-      - shhorsfi@amazon.com
+      - ramjetty@amazon.com
   database:
       name: wordpress
       engine: aurora
