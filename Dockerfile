@@ -1,5 +1,5 @@
 FROM php:7.2-apache
-LABEL maintainer="Scott Horsfield <shhorsfi@amazon.com>"
+LABEL maintainer="Ramesh Jetty<ramjetty@amazon.com>"
 
 RUN a2enmod rewrite
 
